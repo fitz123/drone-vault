@@ -11,7 +11,7 @@ import (
 
 func match(name string, patterns []string) bool {
 	if len(patterns) == 0 {
-		return true
+		return false
 	}
 	name = strings.ToLower(name)
 	for _, pattern := range patterns {
