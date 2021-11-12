@@ -49,7 +49,7 @@ func (p *plugin) Find(ctx context.Context, req *secret.Request) (*drone.Secret, 
 	// user-defined filter logic.
 	events := extractEvents(params)
 	if !match(req.Build.Event, events) {
-		return nil, errors.New("access denied: event does not match")
+		return nil, errors.New("access denied: event does not match or Empty")
 	}
 
 	// the user can filter out requets based on repository
@@ -57,7 +57,7 @@ func (p *plugin) Find(ctx context.Context, req *secret.Request) (*drone.Secret, 
 	// user-defined filter logic.
 	repos := extractRepos(params)
 	if !match(req.Repo.Slug, repos) {
-		return nil, errors.New("access denied: repository does not match")
+		return nil, errors.New("access denied: repository does not match or Empty")
 	}
 
 	// the user can filter out requets based on repository
@@ -65,7 +65,7 @@ func (p *plugin) Find(ctx context.Context, req *secret.Request) (*drone.Secret, 
 	// for this user-defined filter logic.
 	branches := extractBranches(params)
 	if !match(req.Build.Target, branches) {
-		return nil, errors.New("access denied: branch does not match")
+		return nil, errors.New("access denied: branch does not match or Empty")
 	}
 
 	return &drone.Secret{
