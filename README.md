@@ -2,6 +2,10 @@
 
 A secret extension that provides optional support for sourcing secrets from Vault. _Please note this project requires Drone server version 1.3 or higher._
 
+# Modification
+
+Behaviour changed from permissive to strict/forbidden for secrets which have x-drone-* keys missed
+
 ## Installation
 
 Create a shared secret:
